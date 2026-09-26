@@ -1,0 +1,394 @@
+I want you to build a complete, production-ready Telegram Mini App/Web App that I can deploy directly to Vercel and connect to Firebase and a Telegram Bot.
+
+IMPORTANT:
+- Build the COMPLETE project, not just examples or snippets.
+- The final project must be ready to download as a ZIP file.
+- Make sure every required file is included.
+- Do not leave TODO placeholders for important functionality.
+- Do not use fake backend functionality.
+- Make the project work on mobile and desktop.
+- Use clean, modern, professional UI.
+- Make the app responsive.
+
+TECH STACK:
+- Next.js (latest stable version)
+- TypeScript
+- Tailwind CSS
+- Firebase
+- Firebase Authentication
+- Firebase Firestore
+- Telegram Web Apps API
+- Telegram Bot API
+- Vercel deployment
+- Use npm
+
+PROJECT NAME:
+Danmama Telegram Mini App
+
+MAIN FEATURES:
+
+1. TELEGRAM MINI APP
+Create a Telegram Mini App that opens inside Telegram.
+
+The app should:
+- Detect the Telegram user.
+- Display the user's Telegram first name.
+- Display username if available.
+- Display Telegram user ID.
+- Display profile information.
+- Have a professional dashboard.
+- Work properly inside Telegram WebView.
+- Also show a useful preview when opened directly in a normal browser.
+
+Use the official Telegram Web Apps JavaScript API.
+
+Load Telegram WebApp safely and initialize it properly.
+
+2. TELEGRAM BOT
+Create the necessary bot integration structure.
+
+The bot should support:
+- /start
+- /help
+- /app
+
+When the user sends /start, the bot should send a welcome message with an inline button:
+
+"🚀 Open Danmama App"
+
+The button must open the Telegram Mini App.
+
+Do NOT hardcode the Telegram Bot Token in source code.
+
+Use environment variables.
+
+3. FIREBASE
+Integrate Firebase properly.
+
+Use:
+- Firebase Authentication
+- Cloud Firestore
+
+Create a users collection.
+
+When a Telegram user opens the app, create/update their Firestore profile.
+
+Suggested user document:
+
+users/{telegramUserId}
+
+Fields:
+- telegramId
+- firstName
+- lastName
+- username
+- languageCode
+- photoUrl
+- createdAt
+- updatedAt
+
+Use Firebase server/client architecture correctly.
+
+Do not expose Firebase Admin credentials in the browser.
+
+4. AUTHENTICATION
+Implement a secure authentication approach for Telegram users.
+
+Use Telegram WebApp initData validation on the server.
+
+Create an API endpoint that verifies Telegram initData using the Telegram Bot Token stored in an environment variable.
+
+Do not trust Telegram user information sent directly from the browser without server-side validation.
+
+After successful validation:
+- Return authenticated user information.
+- Create/update the Firestore user document.
+
+5. DASHBOARD
+
+Create a beautiful dashboard with:
+
+Header:
+- Danmama logo/text
+- User profile
+- Telegram username
+
+Main section:
+- Welcome message
+- Telegram ID
+- Account status
+
+Cards:
+- Profile
+- Telegram Account
+- Activity
+- Settings
+
+Navigation:
+- Home
+- Profile
+- Settings
+
+Use a clean modern Telegram-style interface.
+
+6. PROFILE PAGE
+
+Display:
+- Profile picture if available
+- First name
+- Last name
+- Username
+- Telegram ID
+- Language
+- Registration date
+
+7. SETTINGS PAGE
+
+Include:
+- Dark/light mode
+- Telegram app information
+- Logout/close app button where appropriate
+
+Make the UI mobile-friendly.
+
+8. API STRUCTURE
+
+Create clean API routes such as:
+
+/api/telegram/auth
+/api/telegram/webhook
+/api/users
+
+Use proper validation and error handling.
+
+9. TELEGRAM WEBHOOK
+
+Create an API endpoint that can receive Telegram Bot webhook updates.
+
+Example:
+
+/api/telegram/webhook
+
+Do not expose the bot token.
+
+Also create a setup script or documented command for setting the Telegram webhook.
+
+10. FIREBASE SECURITY
+
+Create:
+
+firestore.rules
+
+with secure rules.
+
+Do not simply use:
+
+allow read, write: if true;
+
+Use secure rules appropriate for authenticated users.
+
+Also include Firebase configuration instructions.
+
+11. ENVIRONMENT VARIABLES
+
+Create:
+
+.env.example
+
+Include variables such as:
+
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_BOT_USERNAME=
+
+FIREBASE_ADMIN_PROJECT_ID=
+FIREBASE_ADMIN_CLIENT_EMAIL=
+FIREBASE_ADMIN_PRIVATE_KEY=
+
+Never put real secret values in the project.
+
+12. VERCEL
+
+Make the project fully compatible with Vercel.
+
+Include a README.md with complete instructions for:
+
+- Creating Firebase project
+- Creating Firestore database
+- Creating Firebase Web App
+- Getting Firebase configuration
+- Creating Telegram Bot using @BotFather
+- Adding environment variables to Vercel
+- Deploying to Vercel
+- Getting the Vercel production URL
+- Connecting the Vercel URL to the Telegram Mini App
+- Setting Telegram bot commands
+- Setting the Telegram webhook
+- Testing the app inside Telegram
+
+13. BOTFATHER SETUP
+
+Provide exact BotFather instructions.
+
+Explain how to:
+
+- Create the bot
+- Set bot username
+- Set bot description
+- Set bot commands
+- Configure the Mini App/Web App
+- Configure the menu button
+- Connect the Vercel URL
+
+Use placeholders for secrets.
+
+14. PROJECT STRUCTURE
+
+Use a professional structure similar to:
+
+danmama-telegram-mini-app/
+├── app/
+│   ├── api/
+│   │   ├── telegram/
+│   │   │   ├── auth/
+│   │   │   │   └── route.ts
+│   │   │   └── webhook/
+│   │   │       └── route.ts
+│   │   └── users/
+│   │       └── route.ts
+│   ├── dashboard/
+│   │   └── page.tsx
+│   ├── profile/
+│   │   └── page.tsx
+│   ├── settings/
+│   │   └── page.tsx
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+├── components/
+├── lib/
+│   ├── firebase.ts
+│   ├── firebase-admin.ts
+│   └── telegram.ts
+├── public/
+├── firestore.rules
+├── .env.example
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+├── tailwind.config.ts
+└── README.md
+
+You may improve the structure if necessary.
+
+15. ERROR HANDLING
+
+Handle:
+- Telegram WebApp unavailable
+- Invalid Telegram initData
+- Firebase connection errors
+- Missing environment variables
+- Unauthorized requests
+- Firestore errors
+- Invalid API requests
+
+Show friendly error messages to users.
+
+16. SECURITY
+
+Follow good security practices.
+
+Never:
+- Hardcode Telegram Bot Token
+- Hardcode Firebase Admin private key
+- Trust client-supplied Telegram identity
+- Allow unrestricted Firestore writes
+- Commit .env files containing secrets
+
+Validate Telegram initData server-side.
+
+17. UI DESIGN
+
+Design should look professional.
+
+Brand:
+"DANMAMA"
+
+Use:
+- Modern cards
+- Rounded corners
+- Clean typography
+- Mobile-first layout
+- Telegram-inspired styling
+- Smooth but subtle animations
+- Good spacing
+- Dark mode support
+
+Do not make it overly complicated.
+
+18. INSTALLATION
+
+Make sure these commands work:
+
+npm install
+
+npm run dev
+
+npm run build
+
+npm start
+
+The production build must complete without TypeScript errors.
+
+19. README
+
+The README must contain a beginner-friendly step-by-step guide explaining exactly what I need to do after downloading the ZIP.
+
+The guide should start from:
+
+STEP 1 — Create Telegram Bot
+STEP 2 — Create Firebase Project
+STEP 3 — Configure Firestore
+STEP 4 — Configure Firebase Web App
+STEP 5 — Configure environment variables
+STEP 6 — Run locally
+STEP 7 — Upload to GitHub
+STEP 8 — Deploy to Vercel
+STEP 9 — Add environment variables to Vercel
+STEP 10 — Connect Telegram Mini App
+STEP 11 — Configure BotFather
+STEP 12 — Set webhook
+STEP 13 — Test the Mini App
+
+Give exact commands where necessary.
+
+20. FINAL REQUIREMENT
+
+After creating all files:
+
+- Verify imports.
+- Verify routes.
+- Verify TypeScript.
+- Verify package.json.
+- Verify Firebase integration.
+- Verify Telegram integration.
+- Verify Vercel compatibility.
+- Make sure there are no missing files.
+- Make sure the project can run with npm install && npm run build.
+
+Then package the COMPLETE project into:
+
+danmama-telegram-mini-app.zip
+
+I want the ZIP file to contain the complete source code and README.
+
+Do not give me only code snippets.
+
+Create the actual ZIP file for download.
